@@ -89,7 +89,6 @@ cLass DB_Act extends DB_mod{
 			}
 			
 		}
-		
 		if($this->cd === NULL){
 			return self::$C_NULL;
 		}

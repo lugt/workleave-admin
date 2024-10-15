@@ -1,19 +1,20 @@
-﻿<?php
-
-
+<?php
 class Teacher_A{
 	public $i;
 	public $n,$t,$p;
-	public function __construct($row){
+	public function __construct($row) {
 		if($row != NULL){
 			$this->i = $row['uid'];
 			$this->n = $row['name'];
 			$this->t = $row['title'];
 			$this->p = $row['phone'];
-			$this->o = $row['otell'];
+			if (array_key_exists('otell', $row)) {
+			  $this->o = $row['otell'];
+			} else {
+			  $this->o = "188xxxx8888";
+			}
 		}
-	}	
-	
+	}
 }
 
 class Teach_Info{
