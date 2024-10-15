@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="ZH-CN"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=Edge"><title>登录 | Niimei</title><link rel="shortcut icon" href="/favicon.ico?v=1">
+<link rel="stylesheet" title="CSS" type="text/css" href="/images/login/2052.css">
+<style type="text/css">
+:root input[type=checkbox] + label, :root input[type=radio] + label{background-image: url(https://auth.gfx.ms/14.500.21835.00/controls.png), url(https://auth.gfx.ms/14.500.21835.00/controls.png), url(https://auth.gfx.ms/14.500.21835.00/controls.png);}
+::-webkit-scrollbar-button{background-image: url(https://auth.gfx.ms/14.500.21835.00/controls.png);}
+a, a:visited{color:#0072C6;}
+a:hover{color:#338ED1;}
+a:hover:active{color:#66AADC;}
+:root input[type=button].default, :root input[type=submit].default{background-color:#0072C6;}
+:root input[type=button]:hover.default, :root input[type=submit]:hover.default, :root button:hover.default{background-color:#1E82CC;}
+</style>
+<style type="text/css">
+.mask{display:block;}
+</style>
+<script src="/core/ua/detect2.php"></script>
+<script src="/src/page.js"></script>
+<script src="/src/act.js"></script>
+<script>var FB = new f_browser();
+
+if(FB.device.type!="desktop"){
+	opath="";
+	if(args_page.spm){opath+="&spm="+args_page.spm}
+	if(args_page.domain){opath+="&domain="+args_page.domain}
+	if(args_page.goto){opath+="&goto="+args_page.goto}
+	location.href="/welcome-mobile.php?q=returned"+opath}</script>
+</head>
+<body onload="evt_Login_onload(event);" id="cart" uitheme="Web">
+<div id="masK" style="display:none;position:absolute;top:0px;left:0px;width:100%;height:100%;z-index:999;color:#FFFFFF;background-color:#0072C6;padding-top:20%;text-align:center;"><div style='position:relative;magin-top:10px;'><img width='32' height='32' src='images/load/128.gif'/></div>请稍候</div>
+<iframe id="fr99" name="fr99" width="0" height="0" style="display:none;" src="/uc/login.php"></iframe>
+<div style="height: 40px;"></div><div id="shellTD" class="centerParent" style="width: 100%;"><div id="shellTBL" class="center" style="width: 935px;"><div class="centerParent"><div id="mainTD" class="center" style="width: 895px;"><div id="brandModeTD" class="floatLeft" style="width: 475px;"><div id="productTD" style="width: 475px;">
+<iframe id="i0278" height="490px" width="475px" frameborder="0" marginheight="0px" marginwidth="0px" scrolling="no" src=""></iframe></div></div><div id="signInTD" class="floatLeft" style="width: 420px; position: relative;"><div style="height: 40px;"></div><div id="i0272" class="signInHeader"><h1 class="loginhead" id="J_loginhead">登录</h1></div><div style="height: 30px;"></div><div class="floatLeft" style="width: 100px; height: 370px;"></div></span>
+<script>switch(args_page.spm){
+		case "matrix":_id("i0278").src="/welcome-left1.html";break;
+		case "bangpai":_id("i0278").src="/welcome-leftbp.html";break;
+		case "bp":_id("i0278").src="/welcome-leftbp.html";break;
+		case "shop":_id("i0278").src="/welcome-leftshop.html";break;
+		default:_id("i0278").src="/images/login/ZH-CN(1).htm";
+	}</script>
+          <div class="floatLeft" style="width: 320px;"><div id="rightTD"><form action="#" method="POST" target="fr99" name="f1"><div class="section">
+          <div id="idTd_Tile_Error" aria-live="assertive" aria-relevant="text" aria-atomic="true" style="display: none;"><div class="errorDiv first" id="idTd_Tile_ErrorMsg_Login"></div>
+          </div>
+          <div id="idTd_PWD_Error" aria-live="assertive" aria-relevant="text" aria-atomic="true" style="display: none;"><div class="errorDiv first" id="idTd_PWD_ErrorMsg_Username">Generic Password Error Message</div></div><div id="idTd_PWD_UsernameLbl" class="row label"><span id="idLbl_PWD_Username" role="heading">Niimei 帐户 <a id="idA_MSAccLearnMore" href="/wiki/Niimei账户" target="_blank">这是什么?</a></span></div><div id="idDiv_PWD_UsernameTb" class="row textbox"><div style="position: relative; width: 100%;"><input type="text" name="login" id="i0116" maxlength="113" lang="en" class="ltr_override" aria-labelledby="idLbl_PWD_Username"><div class="phholder" style="position: absolute; top: 0px; left: 0px; z-index: 5; width: 100%;"></div></div></div><div id="idTd_PWD_Error_Password" aria-live="assertive" aria-relevant="text" aria-atomic="true" style="display: none;"><div class="errorDiv" id="idTd_PWD_ErrorMsg_Password"></div></div><div id="idDiv_PWD_PasswordTb" class="row textbox"><div style="position: relative; width: 100%;"><input name="passwd" type="password" id="i0118" autocomplete="off" aria-labelledby="idDiv_PWD_PasswordExample"><div class="phholder" style="position: absolute; top: 0px; left: 0px; z-index: 5; width: 100%;"></div></div></div><div id="idTd_PWD_KMSI_Cb"><input type="checkbox" name="KMSI" id="idChkBx_PWD_KMSI0Pwd" value="1"><label for="idChkBx_PWD_KMSI0Pwd" id="idLbl_PWD_KMSI_Cb">使我保持登录状态</label></div></div><div id="idTd_PWD_SubmitCancelTbl" class="section"><input type="submit" name="SI" id="idSIButton9" value="登录" class="default" onclick="gote();"></div><div class="section"><div id="idDiv_PWD_ForgotPassword" class="row small"><a href="/uc/get_acc.php" id="idA_PWD_ForgotPassword">无法访问你的帐户?</a></div><div id="idTD_PWD_SwitchToOTCLink" class="row small"><a href="#" id="idA_PWD_SwitchToOTC">使用一次性代码登录</a></div></div></form></div></div>
+          <div id="SignUpTD" class="SignUp signUpFloat"><span id="i055">没有 Niimei 帐户?</span> <a id="idA_SignUp" href="#" class="TextSemiBold" onclick="regist();">立即注册</a></div></div></div></div><div style="height: 50px; clear: both;"></div><div id="footerTD" class="footer centerParent" style="clear: both;"><div class="center" style="width: 895px;"><table class="footer" cellpadding="0" cellspacing="0"><tbody><tr><td align="left"><table cellpadding="0" cellspacing="0"><tbody><tr>
+                  <td style="text-align: left;"><span id="ftrCopy" class="secondary">©2013 Niimei Center</span></td><td style="text-align: left;"><span></span></td><td class="footerspace" aria-hidden="true">&nbsp;</td><td class="footerspace" aria-hidden="true">&nbsp;</td><td style="text-align: left;"><a href="/help/terms/" class="footerlink" id="ftrTerms">条款</a></td><td class="footerspace" aria-hidden="true">&nbsp;</td><td class="footerspace" aria-hidden="true">&nbsp;</td><td style="text-align: left;"><a href="/help/privacy/" class="footerlink" id="ftrPrivacy">隐私和 Cookie</a></td></tr></tbody></table></td><td></td><td align="right"><table cellpadding="0" cellspacing="0"><tbody><tr><td style="text-align: right;"><a href="/help/" class="footerlink" id="ftrHelp">帮助中心</a></td><td class="footerspace" aria-hidden="true">&nbsp;</td><td class="footerspace" aria-hidden="true">&nbsp;</td><td style="text-align: right;"><a href="/help/req.php" class="footerlink" id="ftrFdbk">反馈</a></td></tr></tbody></table></td></tr></tbody></table></div></div></div></div><div></div><div><object id="ClCache" click="sendMsg" host="" width="0" height="0"></object></div></body></html>

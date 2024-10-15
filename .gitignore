@@ -1,0 +1,7 @@
+
+# For Emacs / Vim editors
+**/*~
+**/#*#
+**/*.bak
+.idea
+.gradle

@@ -1,0 +1,254 @@
+<?php
+
+function search_answer($s){
+?>
+<!DOCTYPE html>
+<!-- saved from url=(0063)http://niimei.com/wind/admin.php?m=bbs&c=article&a=searchthread -->
+<html ><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<title></title>
+<link href="./home_files/admin_style.css" rel="stylesheet">
+<script>
+var GV = {
+	JS_ROOT : "./home_files/",																									//js目录
+	JS_VERSION : "20130227",																										//js版本号
+	TOKEN : '84d90defd6ee4d83',	//token ajax全局
+	REGION_CONFIG : {},
+	SCHOOL_CONFIG : {},
+	URL : {
+		LOGIN : '',																													//后台登录地址
+		IMAGE_RES: './home_files/',																										//图片目录
+		REGION : 'http://niimei.com/wind/index.php?m=misc&c=webData&a=area',					//地区
+		SCHOOL : 'http://niimei.com/wind/index.php?m=misc&c=webData&a=school'				//学校
+	}
+};
+</script>
+<script src="./home_files/wind.js"></script>
+<script src="./home_files/jquery.js"></script>
+<script type="text/javascript" src="./home_files/dialog.js"></script>
+<!--script type="text/javascript" src="./home_files/ajaxForm.js"></script-->
+<script type="text/javascript" src="./home_files/datePicker.js"></script>
+<!--script type="text/javascript" src="./home_files/draggable.js"></script-->
+<link rel="stylesheet" href="./act/search_result_files/style.css">
+</head>
+<body>
+<div class="wrap J_check_wrap">
+	<div class="nav">
+		<ul class="cc">
+			<li class="current"><a href="#">现有请假信息</a></li>
+			<li><a href="#">已过期</a></li>
+		</ul>
+	</div>
+	<input type="hidden" name="csrf_token" value="84d90defd6ee4d83"></form>
+	<div class="J_ajaxForm">
+						<div class="table_list">
+			<table width="100%">
+				<colgroup>
+					<col width="70">
+					<col width="120">
+					<col width="100"> 
+					<col width="200">
+				</colgroup>
+				<thead>
+					<tr>
+						<!--<label><input type="checkbox" class="J_check_all" data-direction="x" data-checklist="J_check_x">全选</label>-->
+						<td>详情</td>
+						<td>时间</td>
+						<td>班级</td>
+						<td>姓名</td>
+						<td>状态</td>
+						<td><span>申请教师</span></td>
+						<td>准假</td>
+						<td>内容</td>
+						<td>地点</td>
+					</tr>
+				</thead>
+					<tbody>
+				<?php
+				foreach($s as $now){
+				?>
+				<tr height="50">
+					<!--<td><input type="checkbox" class="J_check" data-yid="J_check_y" data-xid="J_check_x" name="tids[]" value="8"></td>-->
+					<td><a href="index.php?cast=detail&leave=<?php echo $now->id;?>">查看</a></td>
+					<td><?php date_default_timezone_set('PRC'); 
+						if(strtotime("13:00",$now->st) == $now->st){
+								// 中午
+								echo date("m-d",$now->st)."日午休";
+						}else if(strtotime("18:40",$now->st) == $now->st){
+							// 同一天
+								echo date("m-d",$now->st)."日晚自习";
+						}else if(strtotime("10:00",$now->st) == $now->st){
+								echo date("m-d",$now->st)."日课间操";
+						}else{
+							echo date("m-d日H:i:s",$now->st)." - ".date("m-d日H:i:s",$now->en);
+						}
+						 ?>
+						</td>	
+					<td><a href="index.php?cast=inquire&classn=<?php echo $now->cl; ?>"><?php echo translate_cl($now->cl); ?></a></td>					
+					<td><?php echo $now->na; ?></td>
+					<td><?php echo transtate($now->sa);?></td>
+					<td>
+						<?php echo trans_te($now->ap,$now);?>
+					</td>
+					<td><?php echo translate_au($now->ex,$now);?></td>
+					<td><?php echo trans_re($now->re);?> </td>
+					<td><?php echo $now->po;?> </td>
+				</tr>
+				<?php
+				}
+				?>
+							</tbody></table>
+			<div class="p10">
+							</div>
+		</div>
+						<div class="">
+			<div class="btn_wrap_pd">
+				<div class="select_pages">
+					<a href="#">20</a><span>|</span>
+					<a href="#">50</a><span>|</span>
+					<a href="#">100</a>
+				</div>
+				<label class="mr20"><input type="checkbox" class="J_check_all" data-direction="y" data-checklist="J_check_y">全选</label>
+				<button class="btn J_ajax_submit_btn" onclick="history.go(-1)">返回</button>
+				<a class="btn btn_submit J_ajax_submit_btn" data-action="" href='index.php?cast=inquire&class=<?php echo $GLOBALS['class'];?>&time=<?php echo $GLOBALS['time'];?>';">刷新</a>
+			</div>
+		</div>
+	</form>
+</div>
+
+<script src="./home_files/common.js"></script>
+<html>
+    <head>
+        <title></title>
+    </head>
+    <body>
+        <div id="calroot" style="display: none; position: absolute;">
+            <div id="calhead">
+                <a id="calprev"></a>
+                <div id="caltitle">
+                    <select id="calmonth">
+                        </select> <select id="calyear">
+                        </select>
+                </div><a id="calnext"></a>
+            </div>
+            <div id="calbody">
+                <div id="caldays">
+                    <span>日</span><span>一</span><span>二</span><span>三</span><span>四</span><span>五</span><span>六</span>
+                </div>
+                <div id="calweeks"></div>
+                <div class="caltime">
+                    <button type="button" class="btn btn_submit fr" name="submit">确定</button><input id="calHour" type="number" class="input" min="0" max="23" size="2" value="0"><span>点</span><input id="calMin" class="input" type="number" size="2" min="1" max="59" value="0"><span>分</span>
+                </div>
+            </div>
+        </div>
+        
+    </body>
+</html>
+		</body></html>
+	
+<?php
+}
+
+function translate_cl($cl){
+	if($cl < 10){
+			$p = "未知年级";
+	}else if($cl < 20){
+			$p = "初一";
+			
+	}else if($cl < 30){
+			$p = "初二";
+			
+	}else if($cl < 40){
+			$p = "初三";
+			
+	}else if($cl < 50){
+			$p = "高一";
+			
+	}else if($cl < 60){
+			$p = "高二";
+			
+	}else if($cl < 70){
+			$p = "高三";
+	}else{
+			$p = "未知年级";	
+	}
+	$p .= " ".($cl % 10) . " 班";
+	return $p;	
+}
+
+function translate_au($t,$lfo){
+	if($t == 0){
+		return "<a href=\"index.php?cast=auth&leave=".$lfo->id."\">点击准假</a>";
+	}
+	$tei = new Teach_Info();
+	$tei->load();
+	$an = $tei->getname($t);
+	$ar = $tei->gettitle($t);
+	if($an == NULL || $an == FALSE){
+		return "某个老师";
+	}else{
+		return "<a href='index.php?cast=teacher&a=".$t."'>".$ar." ".$an."</a>";
+	}
+}
+function trans_te($t,$lfo){
+	$tei = new Teach_Info();
+	$tei->load();
+	$an = $tei->getname($t);
+	$ar = $tei->gettitle($t);
+	if($an == NULL || $an == FALSE){
+		return "某个老师";
+	}else{
+		return "<a href='index.php?cast=teacher&a=".$t."'>".$ar." ".$an."</a>";
+	}
+}
+
+function trans_re($re){
+	switch($re){
+  		case "s3":
+  			$sre = "课内活动(培优 等)";	
+  			break;
+  		case "s1":
+ 		  	$sre = "学生会活动";
+ 		  	break;
+  		case "s2":
+  			$sre = "社团活动";
+  			break;
+  		case "s4":
+  			$sre = "外宾交流活动";	
+  			break;
+  		case "s5":
+  			$sre = "校园活动";
+  			break;
+  		case "s6":
+  			$sre = "学生个人情况";
+  			break;
+  		default:
+  			$sre =$re;
+  	}
+  	return $sre;
+	
+	}
+	
+function transtate($c){
+	if($c == 2000){
+		return "已过期";
+	} else if ($c == 800){
+		return "审核超时";
+	} else if ($c == 100){
+		return "<span style=\"color:#aa3;\">等待准假";
+	} else if ($c == 300){
+		return "<span style=\"color:#393;\">已审核</span>";
+	} else if ($c == 400){
+		return "<span style=\"color:#f33;\">审核驳回";
+	} else if ($c == 500){
+		return "<span style=\"color:#f33;\">审核失效";
+	} else if ($c == 600){
+		return "<span style=\"color:#f33;\">审核取消";
+	}	else {
+		return "<span style=\"color:#f33;\">请假出错";	
+	}
+}
+
+
+?>
